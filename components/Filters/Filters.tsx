@@ -4,14 +4,18 @@ import { useState } from 'react';
 
 import styles from './Filters.module.css';
 import { CarFilters } from '@/types/car';
-import { brands, prices } from '@/lib/constants';
+import { prices } from '@/lib/constants';
 import { onlyNumbers } from '@/utils/onlyNumbers';
+import { useBrands } from '@/hooks/useBrands';
+import { formatMileageInput } from '@/utils/formatMileageInput';
 
-type Props = {
+type FiltersProps = {
   onSubmit: (filters: CarFilters) => void;
 };
 
-export default function Filters({ onSubmit }: Props) {
+export default function Filters({ onSubmit }: FiltersProps) {
+
+  const { data: brands = [] } = useBrands();
   const [brand, setBrand] = useState('');
   const [rentalPrice, setRentalPrice] = useState('');
   const [minMileage, setMinMileage] = useState('');
@@ -39,11 +43,11 @@ export default function Filters({ onSubmit }: Props) {
 >
   <option value="">Choose a brand</option>
 
-  {brands.map(brandItem => (
-    <option key={brandItem} value={brandItem}>
-      {brandItem}
-    </option>
-  ))}
+  {brands.map((brandItem: string) => (
+  <option key={brandItem} value={brandItem}>
+    {brandItem}
+  </option>
+))}
 </select>
       </label>
 <label className={styles.field}>
@@ -75,22 +79,24 @@ export default function Filters({ onSubmit }: Props) {
       <div className={styles.mileage}>
   <label className={styles.mileageInput}>
     <span className={styles.prefix}>From</span>
-    <input
-      className={styles.inputWithPrefix}
-      type="text"
-      value={minMileage}
-      onChange={event => setMinMileage(onlyNumbers(event.target.value))}
-    />
+   <input
+  className={styles.inputWithPrefix}
+  type="text"
+  inputMode="numeric"
+  value={formatMileageInput(minMileage)}
+  onChange={event => setMinMileage(onlyNumbers(event.target.value))}
+/>
   </label>
 
   <label className={styles.mileageInput}>
     <span className={styles.prefix}>To</span>
-    <input
-      className={styles.inputWithPrefix}
-      type="text"
-      value={maxMileage}
-     onChange={event => setMaxMileage(onlyNumbers(event.target.value))}
-    />
+   <input
+  className={styles.inputWithPrefix}
+  type="text"
+  inputMode="numeric"
+  value={formatMileageInput(maxMileage)}
+  onChange={event => setMaxMileage(onlyNumbers(event.target.value))}
+/>
   </label>
 </div>
 

@@ -19,3 +19,9 @@ export const getCars = async (page: number, filters: CarFilters) => {
 
   return data;
 };
+
+export const getBrands = async () => {
+  const { data } = await api.get('/brands');
+
+  return data;
+};
