@@ -1,0 +1,40 @@
+.catalog {
+  padding: 84px 0 124px;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 276px);
+  gap: 48px 32px;
+  margin-bottom: 80px;
+}
+
+.loadMore {
+  display: block;
+  min-width: 156px;
+  height: 44px;
+  margin: 0 auto;
+  padding: 0 32px;
+  border: 1px solid var(--color-main);
+  border-radius: 12px;
+  background-color: transparent;
+  color: var(--color-dark);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.loadMore:hover,
+.loadMore:focus {
+  border-color: var(--color-main-hover);
+}
+
+.loader {
+  padding: 80px;
+  text-align: center;
+}
+
+.empty {
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-gray);
+}
