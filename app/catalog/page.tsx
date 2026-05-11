@@ -25,8 +25,8 @@ export default function CatalogPage() {
         {!isLoading && (
           <>
             <ul className={styles.list}>
-              {cars.map(car => (
-                <CarCard key={car.id} car={car} />
+              {cars.map((car, index) => (
+                <CarCard key={car.id} car={car} priority={index < 4} />
               ))}
             </ul>
 

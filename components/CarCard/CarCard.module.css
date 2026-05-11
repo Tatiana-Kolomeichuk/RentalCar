@@ -6,11 +6,16 @@
 }
 
 .imageWrapper {
+  position: relative;
   width: 276px;
   height: 268px;
   margin-bottom: 16px;
   overflow: hidden;
   border-radius: 14px;
+}
+
+.image {
+  object-fit: cover;
 }
 
 .titleRow {

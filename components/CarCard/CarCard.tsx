@@ -5,9 +5,10 @@ import styles from './CarCard.module.css';
 
 type CarCardProps = {
   car: Car;
+   priority?: boolean;
 };
 
-export default function CarCard({ car }: CarCardProps) {
+export default function CarCard({ car, priority = false }: CarCardProps) {
   const addressParts = car.address.split(', ');
   const city = addressParts[addressParts.length - 2];
   const country = addressParts[addressParts.length - 1];
@@ -18,8 +19,9 @@ export default function CarCard({ car }: CarCardProps) {
         <Image
           src={car.img}
           alt={`${car.brand} ${car.model}`}
-          width={276}
-          height={268}
+          fill
+          sizes='276px'
+          priority={priority}
           className={styles.image}
         />
       </div>
@@ -39,7 +41,7 @@ export default function CarCard({ car }: CarCardProps) {
 
       <Link
         href={`/catalog/${car.id}`}
-        target="_blank"
+        target='_blank'
         className={styles.button}
       >
         Read more
