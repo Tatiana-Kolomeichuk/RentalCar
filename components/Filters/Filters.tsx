@@ -15,7 +15,7 @@ type FiltersProps = {
 
 export default function Filters({ onSubmit }: FiltersProps) {
 
-  const { data: brands = [] } = useBrands();
+  const { data: brands = [], isLoading: isBrandsLoading } = useBrands();
   const [brand, setBrand] = useState('');
   const [rentalPrice, setRentalPrice] = useState('');
   const [minMileage, setMinMileage] = useState('');
@@ -36,14 +36,17 @@ export default function Filters({ onSubmit }: FiltersProps) {
     <form className={styles.filters} onSubmit={handleSubmit}>
       <label className={styles.field}>
         <span className={styles.label}>Car brand</span>
-       <select
+      <select
   className={styles.select}
   value={brand}
+  disabled={isBrandsLoading}
   onChange={event => setBrand(event.target.value)}
 >
-  <option value="">Choose a brand</option>
+  <option value="">
+  {isBrandsLoading ? 'Loading brands...' : 'Choose a brand'}
+</option>
 
-  {brands.map((brandItem: string) => (
+{brands.map((brandItem: string) => (
   <option key={brandItem} value={brandItem}>
     {brandItem}
   </option>

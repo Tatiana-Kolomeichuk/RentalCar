@@ -6,6 +6,8 @@ import Filters from '@/components/Filters/Filters';
 import { useCars } from '@/hooks/useCars';
 import { CarFilters } from '@/types/car';
 import styles from './catalog.module.css';
+import Loader from '@/components/Loader/Loader';
+
 
 export default function CatalogPage() {
   const [filters, setFilters] = useState<CarFilters>({});
@@ -20,7 +22,7 @@ export default function CatalogPage() {
       <div className="container">
         <Filters onSubmit={setFilters} />
 
-        {isLoading && <p className={styles.loader}>Loading...</p>}
+        {isLoading && <Loader />}
 
         {!isLoading && (
           <>

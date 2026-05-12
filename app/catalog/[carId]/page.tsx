@@ -3,13 +3,13 @@ import { getCarById } from '@/lib/api';
 import styles from './carDetails.module.css';
 import RentalForm from '@/components/RentalForm/RentalForm';
 
-type Props = {
+type CarDetailsProps = {
   params: Promise<{
     carId: string;
   }>;
 };
 
-export default async function CarDetailsPage({ params }: Props) {
+export default async function CarDetailsPage({ params }: CarDetailsProps) {
   const { carId } = await params;
 
   const car = await getCarById(carId);
