@@ -3,6 +3,7 @@ import {  Manrope } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 import Header from "@/components/Header/Header";
+import { Toaster } from 'react-hot-toast';
 
 
 const manrope = Manrope({
@@ -30,6 +31,7 @@ export default function RootLayout({
         <QueryProvider>
           <Header />
           {children}
+          <Toaster position="top-right" />
         </QueryProvider></body>
     </html>
   );

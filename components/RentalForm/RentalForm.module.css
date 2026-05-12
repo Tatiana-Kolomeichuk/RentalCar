@@ -1,0 +1,190 @@
+.form {
+  width: 640px;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.title {
+  margin-bottom: 8px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.text {
+  margin-bottom: 24px;
+  font-weight: 500;
+  color: var(--color-gray);
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.input {
+  height: 48px;
+  margin-bottom: 16px;
+  padding: 0 20px;
+}
+
+.textarea {
+  height: 88px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  resize: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-gray);
+}
+
+.input:focus,
+.textarea:focus {
+  box-shadow: 0 0 0 1px var(--color-main);
+}
+
+.button {
+  display: block;
+  width: 156px;
+  height: 44px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 12px;
+  background-color: var(--color-main);
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--color-main-hover);
+}
+
+
+.datePickerWrapper {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.datePickerWrapper :global(.react-datepicker-wrapper) {
+  width: 100%;
+}
+
+.datePickerWrapper :global(.react-datepicker__input-container) {
+  width: 100%;
+}
+
+.datePickerWrapper input {
+  width: 100%;
+}
+.popper {
+  z-index: 20;
+}
+
+.calendar {
+  width: 250px !important;
+  border: 1px solid var(--color-main) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-main) !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+.calendar :global(.react-datepicker__month-container) {
+  width: 100% !important;
+}
+
+.calendar :global(.react-datepicker__header) {
+  padding: 12px 16px 8px !important;
+  background-color: #f2f4f7 !important;
+  border-bottom: 1px solid #dadde1 !important;
+}
+
+.calendar :global(.react-datepicker__current-month) {
+  margin-bottom: 12px !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+  color: var(--color-dark) !important;
+}
+
+.calendar :global(.react-datepicker__day-names) {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+  margin: 0 !important;
+}
+
+.calendar :global(.react-datepicker__month) {
+  margin: 0 !important;
+  padding: 8px 16px 12px !important;
+  background-color: var(--color-white) !important;
+}
+
+.calendar :global(.react-datepicker__week) {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+}
+
+.calendar :global(.react-datepicker__day-name),
+.calendar :global(.react-datepicker__day) {
+  width: 24px !important;
+  height: 24px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  color: var(--color-dark) !important;
+}
+
+.calendar :global(.react-datepicker__day--outside-month) {
+  color: var(--color-gray) !important;
+}
+
+.calendar :global(.react-datepicker__day--selected),
+.calendar :global(.react-datepicker__day--keyboard-selected) {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  background-color: var(--color-main) !important;
+  color: var(--color-white) !important;
+}
+
+.calendar :global(.react-datepicker__navigation) {
+  top: 10px !important;
+}
+
+.calendar :global(.react-datepicker__navigation--previous) {
+  left: 16px !important;
+}
+
+.calendar :global(.react-datepicker__navigation--next) {
+  right: 16px !important;
+}
+
+.calendar :global(.react-datepicker__navigation-icon::before) {
+  border-color: var(--color-main) !important;
+  border-width: 2px 2px 0 0 !important;
+}
+
+.calendar :global(.react-datepicker__triangle) {
+  fill: #f2f4f7 !important;
+  stroke: var(--color-main) !important;
+}
