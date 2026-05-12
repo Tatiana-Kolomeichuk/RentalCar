@@ -38,3 +38,10 @@
   font-size: 18px;
   color: var(--color-gray);
 }
+.error {
+  padding: 80px 0;
+  text-align: center;
+  color: #d92d20;
+  font-size: 18px;
+  font-weight: 500;
+}

@@ -12,10 +12,22 @@ import Loader from '@/components/Loader/Loader';
 export default function CatalogPage() {
   const [filters, setFilters] = useState<CarFilters>({});
 
-  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage, isError } =
     useCars(filters);
 
   const cars = data?.pages.flatMap(page => page.cars) ?? [];
+
+  if (isError) {
+  return (
+    <main className={styles.catalog}>
+      <div className="container">
+        <p className={styles.error}>
+          Something went wrong. Please try again.
+        </p>
+      </div>
+    </main>
+  );
+}
 
   return (
     <main className={styles.catalog}>

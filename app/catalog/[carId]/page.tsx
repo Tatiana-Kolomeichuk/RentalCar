@@ -11,9 +11,19 @@ type CarDetailsProps = {
 
 export default async function CarDetailsPage({ params }: CarDetailsProps) {
   const { carId } = await params;
+let car;
 
-  const car = await getCarById(carId);
-
+try {
+  car = await getCarById(carId);
+} catch {
+  return (
+    <main className={styles.details}>
+      <div className="container">
+        <p className={styles.error}>Car not found or request failed.</p>
+      </div>
+    </main>
+  );
+}
   const addressParts = car.address.split(', ');
   const city = addressParts[addressParts.length - 2];
   const country = addressParts[addressParts.length - 1];
