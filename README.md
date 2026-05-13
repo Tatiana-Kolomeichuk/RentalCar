@@ -43,7 +43,7 @@ for each car, and submit a booking request form.
 
 The project uses the RentalCar API:
 
-```txt
+````txt
 https://car-rental-api.goit.global
 
 Available endpoints used in the project:
@@ -90,14 +90,28 @@ npm run lint
 
 Runs code linting.
 
-Project Structure
+## Project Structure
+
+```txt
 src/
 ├─ app/
 │  ├─ catalog/
+│  │  ├─ [carId]/
+│  │  ├─ CatalogClient.tsx
+│  │  ├─ layout.tsx
+│  │  └─ page.tsx
 │  ├─ layout.tsx
 │  ├─ page.tsx
 │  └─ globals.css
+│
 ├─ components/
+│  ├─ CarCard/
+│  ├─ Filters/
+│  ├─ Header/
+│  ├─ Hero/
+│  ├─ Loader/
+│  └─ RentalForm/
+│
 ├─ hooks/
 ├─ lib/
 ├─ providers/
@@ -113,4 +127,4 @@ rental-car-olive-three.vercel.app
 Author
 
 Tetiana Kolomeichuk
-```
+````
