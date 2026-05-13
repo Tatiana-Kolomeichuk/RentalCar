@@ -93,12 +93,13 @@ Runs code linting.
 ## Project Structure
 
 
+```txt
 src/
 ├─ app/
 │  ├─ catalog/
 │  │  ├─ [carId]/
+│  │  ├─ page.tsx
 │  │  ├─ CatalogClient.tsx
-│  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  ├─ layout.tsx
 │  ├─ page.tsx
@@ -117,6 +118,7 @@ src/
 ├─ providers/
 ├─ types/
 └─ utils/
+```
 Deployment
 
 The project can be deployed on Vercel or Netlify.
