@@ -54,6 +54,10 @@
   font-weight: 500;
 }
 
+.model {
+  color: var(--color-main);
+}
+
 .price {
   flex-shrink: 0;
   font-size: 16px;
@@ -62,8 +66,10 @@
 }
 
 .info {
-  min-height: 40px;
+  width: 276px;
+  height: 40px;
   margin-bottom: 28px;
+  overflow: hidden;
   color: var(--color-gray);
   font-size: 12px;
   line-height: 1.33;
@@ -81,4 +87,8 @@
   color: var(--color-white);
   font-size: 16px;
   font-weight: 600;
+}
+.button:hover,
+.button:focus {
+  background-color: var(--color-main-hover);
 }

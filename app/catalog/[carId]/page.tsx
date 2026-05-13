@@ -26,7 +26,7 @@ export async function generateMetadata({
       openGraph: {
         title: `RentalCar | ${car.brand} ${car.model}`,
         description: car.description,
-        url: `/catalog/${carId}`,
+        url: `https://rental-car-olive-three.vercel.app/catalog/${carId}`,
         siteName: 'RentalCar',
         images: [
           {

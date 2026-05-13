@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'RentalCar | Catalog',
     description:
       'Browse available rental cars and filter them by brand, price, and mileage.',
-    url: '/catalog',
+    url: 'https://rental-car-olive-three.vercel.app/catalog',
     siteName: 'RentalCar',
     images: [
       {

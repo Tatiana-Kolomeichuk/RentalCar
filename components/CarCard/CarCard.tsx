@@ -58,7 +58,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
 
       <div className={styles.titleRow}>
         <h2 className={styles.title}>
-          {car.brand} <span>{car.model}</span>, {car.year}
+          {car.brand} <span className={styles.model}>{car.model}</span>, {car.year}
         </h2>
 
         <p className={styles.price}>${car.rentalPrice}</p>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'RentalCar',
     description: 'Find your perfect rental car for any journey.',
-    url: '',
+    url: 'https://rental-car-olive-three.vercel.app/',
     siteName: 'RentalCar',
     images: [
       {

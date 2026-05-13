@@ -1,4 +1,4 @@
-import { CarFilters } from '@/types/car';
+import { BookingRequestPayload, CarFilters } from '@/types/car';
 import axios from 'axios';
 
 export const api = axios.create({
@@ -28,5 +28,14 @@ export const getBrands = async () => {
 
 export const getCarById = async (id: string) => {
   const { data } = await api.get(`/cars/${id}`);
+  return data;
+};
+
+export const createBookingRequest = async (
+  carId: string,
+  payload: BookingRequestPayload,
+) => {
+  const { data } = await api.post(`/cars/${carId}/booking-requests`, payload);
+
   return data;
 };

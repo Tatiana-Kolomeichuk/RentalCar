@@ -27,11 +27,13 @@
   outline: none;
   background-color: var(--color-bg);
   color: var(--color-dark);
-  font-size: 14px;
+  font-weight: 500;
+
 }
 
 .mileage {
   display: flex;
+  font-weight: 500;
 }
 
 .input {
@@ -55,20 +57,25 @@
 }
 
 .button {
-  width: 156px;
-  height: 44px;
+  border-radius: 12px;
+padding: 12px 51px;
+width: 156px;
+height: 44px;
   border: none;
   border-radius: 12px;
   background-color: var(--color-main);
   color: var(--color-white);
-  font-size: 16px;
   font-weight: 600;
+   transition: background-color var(--transition);
 }
 .button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
+.button:hover,
+.button:focus {
+  background-color: var(--color-main-hover);
+}
 .inputBox {
   position: relative;
   width: 204px;

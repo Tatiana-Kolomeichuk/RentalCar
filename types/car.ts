@@ -23,3 +23,9 @@ export type CarFilters = {
   minMileage?: string;
   maxMileage?: string;
 };
+
+export type BookingRequestPayload = {
+  name: string;
+  email: string;
+  comment: string;
+};

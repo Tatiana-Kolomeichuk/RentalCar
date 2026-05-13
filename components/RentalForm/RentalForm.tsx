@@ -6,6 +6,7 @@ import type { FieldProps } from 'formik';
 import { Formik, Form, Field } from 'formik';
 import styles from './RentalForm.module.css';
 import toast from 'react-hot-toast';
+import { createBookingRequest } from '@/lib/api';
 
 type RentalFormProps = {
   carId: string;
@@ -26,20 +27,22 @@ const initialValues: RentalFormValues = {
 };
 
 export default function RentalForm({ carId }: RentalFormProps) {
-  const handleSubmit = (
+ const handleSubmit = async (
   values: RentalFormValues,
   { resetForm }: { resetForm: () => void }
 ) => {
-  const payload = {
-    carId,
-    ...values,
-    date: values.date ? values.date.toISOString() : null,
-  };
+  try {
+    await createBookingRequest(carId, {
+      name: values.name,
+      email: values.email,
+      comment: values.comment,
+    });
 
-  console.log('Rental form payload:', payload);
-
-  toast.success('Car rented successfully!');
-  resetForm();
+    toast.success('Car rented successfully!');
+    resetForm();
+  } catch {
+    toast.error('Something went wrong. Please try again.');
+  }
 };
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>

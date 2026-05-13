@@ -81,6 +81,8 @@ export default function Filters({ onSubmit }: FiltersProps) {
         </div>
       </label>
 
+      <div className={styles.field}>
+  <span className={styles.label}>Car mileage / km</span>
       <div className={styles.mileage}>
         <label className={styles.mileageInput}>
           <span className={styles.prefix}>From</span>
@@ -103,7 +105,8 @@ export default function Filters({ onSubmit }: FiltersProps) {
             onChange={(event) => setMaxMileage(onlyNumbers(event.target.value))}
           />
         </label>
-      </div>
+        </div>
+        </div>
 
       <button type='submit' className={styles.button} disabled={isBrandsLoading}>
         Search
