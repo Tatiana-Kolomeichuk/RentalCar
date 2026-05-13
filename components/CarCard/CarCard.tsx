@@ -1,17 +1,31 @@
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Car } from '@/types/car';
 import styles from './CarCard.module.css';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 type CarCardProps = {
   car: Car;
-   priority?: boolean;
+  priority?: boolean;
 };
 
 export default function CarCard({ car, priority = false }: CarCardProps) {
+  const [isFavorite, setIsFavorite] = useState(false);
   const addressParts = car.address.split(', ');
   const city = addressParts[addressParts.length - 2];
   const country = addressParts[addressParts.length - 1];
+
+  const handleFavoriteClick = () => {
+  const nextValue = !isFavorite;
+
+  setIsFavorite(nextValue);
+
+  toast.success(
+    nextValue ? 'Added to favorites' : 'Removed from favorites'
+  );
+};
 
   return (
     <li className={styles.card}>
@@ -24,6 +38,22 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
           priority={priority}
           className={styles.image}
         />
+        <button
+          type='button'
+          className={styles.favoriteButton}
+          onClick={handleFavoriteClick}
+          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        >
+          <svg className={styles.favoriteIcon}>
+            <use
+              href={
+                isFavorite
+                  ? '/sprite.svg#icon-heart-filled'
+                  : '/sprite.svg#icon-heart'
+              }
+            />
+          </svg>
+        </button>
       </div>
 
       <div className={styles.titleRow}>
