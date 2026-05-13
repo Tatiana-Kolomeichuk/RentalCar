@@ -14,7 +14,22 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: 'RentalCar',
-  description: 'Rental car application',
+  description: 'Find your perfect rental car for any journey.',
+  openGraph: {
+    title: 'RentalCar',
+    description: 'Find your perfect rental car for any journey.',
+    url: '',
+    siteName: 'RentalCar',
+    images: [
+      {
+        url: '/hero-car.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'RentalCar hero image',
+      },
+    ],
+    type: 'website',
+  },
   icons: {
     icon: '/favicon.png',
   },

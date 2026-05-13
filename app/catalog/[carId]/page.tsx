@@ -1,13 +1,51 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import { getCarById } from '@/lib/api';
 import styles from './carDetails.module.css';
 import RentalForm from '@/components/RentalForm/RentalForm';
+import { Car } from '@/types/car';
 
 type CarDetailsProps = {
   params: Promise<{
     carId: string;
   }>;
 };
+
+
+export async function generateMetadata({
+  params,
+}: CarDetailsProps): Promise<Metadata> {
+  const { carId } = await params;
+
+  try {
+    const car: Car = await getCarById(carId);
+
+    return {
+      title: `RentalCar | ${car.brand} ${car.model}`,
+      description: car.description,
+      openGraph: {
+        title: `RentalCar | ${car.brand} ${car.model}`,
+        description: car.description,
+        url: `/catalog/${carId}`,
+        siteName: 'RentalCar',
+        images: [
+          {
+            url: car.img,
+            width: 1200,
+            height: 630,
+            alt: `${car.brand} ${car.model}`,
+          },
+        ],
+        type: 'website',
+      },
+    };
+  } catch {
+    return {
+      title: 'RentalCar | Car not found',
+      description: 'The requested car could not be found.',
+    };
+  }
+}
 
 export default async function CarDetailsPage({ params }: CarDetailsProps) {
   const { carId } = await params;
