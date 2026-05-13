@@ -43,7 +43,7 @@ for each car, and submit a booking request form.
 
 The project uses the RentalCar API:
 
-````txt
+
 https://car-rental-api.goit.global
 
 Available endpoints used in the project:
@@ -92,7 +92,7 @@ Runs code linting.
 
 ## Project Structure
 
-```txt
+
 src/
 ├─ app/
 │  ├─ catalog/
