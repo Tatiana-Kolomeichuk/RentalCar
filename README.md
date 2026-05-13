@@ -123,7 +123,7 @@ The project can be deployed on Vercel or Netlify.
 
 Production URL:
 
-rental-car-olive-three.vercel.app
+rental-car-olive-three.vercel.app <br>
 Author
 
 Tetiana Kolomeichuk
