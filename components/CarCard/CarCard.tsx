@@ -13,19 +13,16 @@ type CarCardProps = {
 
 export default function CarCard({ car, priority = false }: CarCardProps) {
   const [isFavorite, setIsFavorite] = useState(false);
-  const addressParts = car.address.split(', ');
-  const city = addressParts[addressParts.length - 2];
-  const country = addressParts[addressParts.length - 1];
+  const city = car.location.city;
+  const country = car.location.country;
 
   const handleFavoriteClick = () => {
-  const nextValue = !isFavorite;
+    const nextValue = !isFavorite;
 
-  setIsFavorite(nextValue);
+    setIsFavorite(nextValue);
 
-  toast.success(
-    nextValue ? 'Added to favorites' : 'Removed from favorites'
-  );
-};
+    toast.success(nextValue ? 'Added to favorites' : 'Removed from favorites');
+  };
 
   return (
     <li className={styles.card}>
@@ -58,7 +55,8 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
 
       <div className={styles.titleRow}>
         <h2 className={styles.title}>
-          {car.brand} <span className={styles.model}>{car.model}</span>, {car.year}
+          {car.brand} <span className={styles.model}>{car.model}</span>,{' '}
+          {car.year}
         </h2>
 
         <p className={styles.price}>${car.rentalPrice}</p>

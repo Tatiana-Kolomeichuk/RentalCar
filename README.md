@@ -50,7 +50,7 @@ Available endpoints used in the project:
 
 GET /cars
 GET /cars/{id}
-GET /brands
+GET /cars/filters
 POST /cars/{carId}/booking-requests
 Installation
 

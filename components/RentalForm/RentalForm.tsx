@@ -27,23 +27,26 @@ const initialValues: RentalFormValues = {
 };
 
 export default function RentalForm({ carId }: RentalFormProps) {
- const handleSubmit = async (
+const handleSubmit = async (
   values: RentalFormValues,
   { resetForm }: { resetForm: () => void }
 ) => {
+  const payload = {
+    name: values.name.trim(),
+    email: values.email.trim(),
+    comment: values.comment.trim() || 'No comment',
+  };
+
   try {
-    await createBookingRequest(carId, {
-      name: values.name,
-      email: values.email,
-      comment: values.comment,
-    });
+     await createBookingRequest(carId, payload);
 
     toast.success('Car rented successfully!');
     resetForm();
-  } catch {
+  } catch (error) {
     toast.error('Something went wrong. Please try again.');
   }
-};
+  };
+  
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className={styles.form}>

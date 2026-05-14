@@ -10,15 +10,20 @@ const manrope = Manrope({
   variable: '--font-manrope',
   subsets: ['latin', 'cyrillic'],
   weight: ['400', '500', '600', '700'],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rental-car-olive-three.vercel.app'),
   title: 'RentalCar',
   description: 'Find your perfect rental car for any journey.',
+  icons: {
+    icon: '/favicon.png',
+  },
   openGraph: {
     title: 'RentalCar',
     description: 'Find your perfect rental car for any journey.',
-    url: 'https://rental-car-olive-three.vercel.app/',
+    url: '/',
     siteName: 'RentalCar',
     images: [
       {
@@ -29,9 +34,6 @@ export const metadata: Metadata = {
       },
     ],
     type: 'website',
-  },
-  icons: {
-    icon: '/favicon.png',
   },
 };
 

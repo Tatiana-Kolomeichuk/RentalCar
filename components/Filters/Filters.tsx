@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-
 import styles from './Filters.module.css';
 import { CarFilters } from '@/types/car';
-import { prices } from '@/lib/constants';
 import { onlyNumbers } from '@/utils/onlyNumbers';
-import { useBrands } from '@/hooks/useBrands';
 import { formatMileageInput } from '@/utils/formatMileageInput';
+import { useCarFilters } from '@/hooks/useFilters';
+import CustomSelect from '../CustomSelect/CustomSelect';
 
 type FiltersProps = {
   onSubmit: (filters: CarFilters) => void;
@@ -15,10 +14,19 @@ type FiltersProps = {
 
 export default function Filters({ onSubmit }: FiltersProps) {
   const {
-    data: brands = [],
-    isLoading: isBrandsLoading,
-    isError: isBrandsError,
-  } = useBrands();
+    data: filterData,
+    isLoading: isFiltersLoading,
+    isError: isFiltersError,
+  } = useCarFilters();
+
+  const brands = filterData?.brands ?? [];
+
+  const prices = filterData?.price
+    ? Array.from(
+        { length: filterData.price.max - filterData.price.min + 1 },
+        (_, index) => filterData.price.min + index,
+      )
+    : [];
   const [brand, setBrand] = useState('');
   const [rentalPrice, setRentalPrice] = useState('');
   const [minMileage, setMinMileage] = useState('');
@@ -38,77 +46,69 @@ export default function Filters({ onSubmit }: FiltersProps) {
   return (
     <form className={styles.filters} onSubmit={handleSubmit}>
       <label className={styles.field}>
-        <span className={styles.label}>Car brand</span>
-        <select
-          className={styles.select}
-          value={brand}
-          disabled={isBrandsLoading || isBrandsError}
-          onChange={(event) => setBrand(event.target.value)}
-        >
-          <option value=''>
-            {isBrandsLoading
+        <CustomSelect
+          label='Car brand'
+          placeholder={
+            isFiltersLoading
               ? 'Loading brands...'
-              : isBrandsError
+              : isFiltersError
                 ? 'Brands unavailable'
-                : 'Choose a brand'}
-          </option>
-          {brands.map((brandItem: string) => (
-            <option key={brandItem} value={brandItem}>
-              {brandItem}
-            </option>
-          ))}
-        </select>
+                : 'Choose a brand'
+          }
+          value={brand}
+          options={brands}
+          disabled={isFiltersLoading || isFiltersError}
+          onChange={setBrand}
+        />
       </label>
       <label className={styles.field}>
-        <span className={styles.label}>Price / 1 hour</span>
-
-        <div className={styles.inputBox}>
-          {rentalPrice && <span className={styles.prefix}>To $</span>}
-
-          <select
-            className={rentalPrice ? styles.selectWithPrefix : styles.select}
+          <CustomSelect
+            label='Price / 1 hour'
+            placeholder='Choose a price'
             value={rentalPrice}
-            onChange={(event) => setRentalPrice(event.target.value)}
-          >
-            <option value=''>Choose a price</option>
-
-            {prices.map((price) => (
-              <option key={price} value={price}>
-                {price}
-              </option>
-            ))}
-          </select>
-        </div>
+            options={prices.map(String)}
+            prefix='To $'
+            disabled={isFiltersLoading || isFiltersError}
+            onChange={setRentalPrice}
+          />
       </label>
 
       <div className={styles.field}>
-  <span className={styles.label}>Car mileage / km</span>
-      <div className={styles.mileage}>
-        <label className={styles.mileageInput}>
-          <span className={styles.prefix}>From</span>
-          <input
-            className={styles.inputWithPrefix}
-            type='text'
-            inputMode='numeric'
-            value={formatMileageInput(minMileage)}
-            onChange={(event) => setMinMileage(onlyNumbers(event.target.value))}
-          />
-        </label>
+        <span className={styles.label}>Car mileage / km</span>
+        <div className={styles.mileage}>
+          <label className={styles.mileageInput}>
+            <span className={styles.prefix}>From</span>
+            <input
+              className={styles.inputWithPrefix}
+              type='text'
+              inputMode='numeric'
+              value={formatMileageInput(minMileage)}
+              onChange={(event) =>
+                setMinMileage(onlyNumbers(event.target.value))
+              }
+            />
+          </label>
 
-        <label className={styles.mileageInput}>
-          <span className={styles.prefix}>To</span>
-          <input
-            className={styles.inputWithPrefix}
-            type='text'
-            inputMode='numeric'
-            value={formatMileageInput(maxMileage)}
-            onChange={(event) => setMaxMileage(onlyNumbers(event.target.value))}
-          />
-        </label>
+          <label className={styles.mileageInput}>
+            <span className={styles.prefix}>To</span>
+            <input
+              className={styles.inputWithPrefix}
+              type='text'
+              inputMode='numeric'
+              value={formatMileageInput(maxMileage)}
+              onChange={(event) =>
+                setMaxMileage(onlyNumbers(event.target.value))
+              }
+            />
+          </label>
         </div>
-        </div>
+      </div>
 
-      <button type='submit' className={styles.button} disabled={isBrandsLoading}>
+      <button
+        type='submit'
+        className={styles.button}
+        disabled={isFiltersLoading}
+      >
         Search
       </button>
     </form>

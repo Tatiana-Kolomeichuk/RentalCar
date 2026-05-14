@@ -2,16 +2,16 @@ import { BookingRequestPayload, CarFilters } from '@/types/car';
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://car-rental-api.goit.global',
+  baseURL:'https://car-rental-api.goit.study',
 });
-
+//https://car-rental-api.goit.global
 export const getCars = async (page: number, filters: CarFilters) => {
   const { data } = await api.get('/cars', {
     params: {
       page,
-      limit: 12,
+      perPage: 8,
       brand: filters.brand || undefined,
-      rentalPrice: filters.rentalPrice || undefined,
+      price: filters.rentalPrice || undefined,
       minMileage: filters.minMileage || undefined,
       maxMileage: filters.maxMileage || undefined,
     },
@@ -20,8 +20,8 @@ export const getCars = async (page: number, filters: CarFilters) => {
   return data;
 };
 
-export const getBrands = async () => {
-  const { data } = await api.get('/brands');
+export const getCarFilters = async () => {
+  const { data } = await api.get('/cars/filters');
 
   return data;
 };
@@ -32,7 +32,7 @@ export const getCarById = async (id: string) => {
 };
 
 export const createBookingRequest = async (
-  carId: string,
+ carId: string,
   payload: BookingRequestPayload,
 ) => {
   const { data } = await api.post(`/cars/${carId}/booking-requests`, payload);
