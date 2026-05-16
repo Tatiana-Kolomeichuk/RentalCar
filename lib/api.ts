@@ -4,7 +4,6 @@ import axios from 'axios';
 export const api = axios.create({
   baseURL:'https://car-rental-api.goit.study',
 });
-//https://car-rental-api.goit.global
 export const getCars = async (page: number, filters: CarFilters) => {
   const { data } = await api.get('/cars', {
     params: {
