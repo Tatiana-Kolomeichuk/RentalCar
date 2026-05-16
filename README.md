@@ -12,7 +12,7 @@ for each car, and submit a booking request form.
 ## Main Features
 
 - Home page with hero section and navigation to the catalog
-- Car catalog page
+- Car catalog page with a list of available cars
 - Backend filtering by:
   - brand
   - rental price
@@ -30,7 +30,7 @@ for each car, and submit a booking request form.
 
 - Next.js
 - TypeScript
-- App Router
+- Next.js App Router
 - TanStack Query
 - Axios
 - Formik
@@ -43,62 +43,75 @@ for each car, and submit a booking request form.
 
 The project uses the RentalCar API:
 
-
-https://car-rental-api.goit.global
+```txt
+https://car-rental-api.goit.study
+```
 
 Available endpoints used in the project:
 
-GET /cars
-GET /cars/{id}
-GET /cars/filters
-POST /cars/{carId}/booking-requests
-Installation
+- `GET /cars` — get cars with pagination and filters
+- `GET /cars/{id}` — get car details by ID
+- `GET /cars/filters` — get available filter values
+- `POST /cars/{carId}/booking-requests` — send a booking request
+
+## Installation
 
 Clone the repository:
 
-git clone  https://github.com/Tatiana-Kolomeichuk
+```bash
+git clone https://github.com/Tatiana-Kolomeichuk/RentalCar.git
+```
 
 Go to the project folder:
 
-cd rental-car
+```bash
+cd RentalCar
+```
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Run the development server:
 
+```bash
 npm run dev
+```
 
 Open the application in your browser:
 
+```txt
 http://localhost:3000
-Available Scripts
-npm run dev
+```
+
+## Available Scripts
+
+### `npm run dev`
 
 Runs the project in development mode.
 
-npm run build
+### `npm run build`
 
 Builds the project for production.
 
-npm run start
+### `npm run start`
 
 Starts the production build.
 
-npm run lint
+### `npm run lint`
 
 Runs code linting.
 
 ## Project Structure
 
-
 ```txt
-src/
+RentalCar/
 ├─ app/
 │  ├─ catalog/
 │  │  ├─ [carId]/
-│  │  ├─ page.tsx
+│  │  │  └─ page.tsx
 │  │  ├─ CatalogClient.tsx
 │  │  └─ page.tsx
 │  ├─ layout.tsx
@@ -119,14 +132,17 @@ src/
 ├─ types/
 └─ utils/
 ```
-Deployment
 
-The project can be deployed on Vercel or Netlify.
+## Deployment
+
+The project is deployed on Vercel.
 
 Production URL:
 
-rental-car-olive-three.vercel.app <br>
-Author
+```txt
+https://rental-car-olive-three.vercel.app
+```
+
+## Author
 
 Tetiana Kolomeichuk
-````
